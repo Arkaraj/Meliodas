@@ -1,11 +1,12 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
-import { ApiController, AppController } from './app.controller';
+import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { User } from './entities/User.entity';
 import { Address } from './entities/Address.entity';
 import { Cats } from './entities/Cats.entity';
+import { ApiModule } from './api/api.module';
 
 @Module({
   imports: [
@@ -20,8 +21,9 @@ import { Cats } from './entities/Cats.entity';
       entities: [User, Address, Cats], // src/entities/*.entity{.ts,.js}
       synchronize: false,
     }),
+    ApiModule,
   ],
-  controllers: [ApiController, AppController],
+  controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {}

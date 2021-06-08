@@ -69,8 +69,23 @@ P.S. I wanted to test out NestJs hype....
 ## Tech Stack
 
 - Nest Js
-- Postgres SQL
+- My SQL
 - TypeOrm for sql orm(preferably)
+
+## Routes
+
+- GET /cats/ - Get all Cats
+- GET /cats/:id - Get a Specific Cat
+- POST /cats/ - Create new Cat
+- PUT /cats/:catId - Update cat detail
+- DELETE /cats/ - Delete cat
+
+- GET /users/ - Gets all users
+- GET /users/:userId - Gets specific user
+- POST /users/ - Creates new user
+- POST /users/:userId/:catId - Adopt/Pet specific Cat
+- DELETE /users/:userId/:catId - Remove Specific Cat from pets list
+- PUT /users/address/:userId - Adds address to the user
 
 ## License
 

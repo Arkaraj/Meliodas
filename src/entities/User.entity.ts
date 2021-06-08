@@ -4,12 +4,13 @@ import {
   PrimaryGeneratedColumn,
   OneToOne,
   OneToMany,
+  BaseEntity,
 } from 'typeorm';
 import { Address } from './Address.entity';
 import { Cats } from './Cats.entity';
 
 @Entity()
-export class User {
+export class User extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   id: number;
 
