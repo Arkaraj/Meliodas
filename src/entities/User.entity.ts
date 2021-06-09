@@ -12,7 +12,7 @@ import { Cats } from './Cats.entity';
 @Entity()
 export class User extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
-  id: number;
+  id: string;
 
   @Column('varchar')
   firstName: string;

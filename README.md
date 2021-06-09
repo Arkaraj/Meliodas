@@ -77,8 +77,9 @@ P.S. I wanted to test out NestJs hype....
 - GET /cats/ - Get all Cats
 - GET /cats/:id - Get a Specific Cat
 - POST /cats/ - Create new Cat
-- PUT /cats/:catId - Update cat detail
-- DELETE /cats/ - Delete cat
+- PUT /cats/:catId - Update cat availability
+- PATCH /cats/:catId - Update cat's pet points, likebility
+- DELETE /cats/:catId - Delete cat
 
 - GET /users/ - Gets all users
 - GET /users/:userId - Gets specific user
