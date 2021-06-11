@@ -8,6 +8,7 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
+import { CatsDto } from './cats.dto';
 import { CatsService } from './cats.service';
 
 @Controller('api/cats')
@@ -25,8 +26,8 @@ export class CatsController {
   }
 
   @Post()
-  async CreateCat() {
-    return this.catsService.createCat();
+  async CreateCat(@Body() cat: CatsDto) {
+    return this.catsService.createCat(cat);
   }
 
   @Put(':id')

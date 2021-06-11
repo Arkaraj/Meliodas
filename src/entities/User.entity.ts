@@ -5,6 +5,7 @@ import {
   OneToOne,
   OneToMany,
   BaseEntity,
+  JoinColumn,
 } from 'typeorm';
 import { Address } from './Address.entity';
 import { Cats } from './Cats.entity';
@@ -23,11 +24,12 @@ export class User extends BaseEntity {
   @Column('int')
   age: number;
 
-  @Column('varchar', { length: 9 })
+  @Column('varchar', { length: 10 })
   phone: string;
 
   @OneToOne(() => Address, (addr) => addr.id)
-  address: Address;
+  @JoinColumn()
+  address: Address | null;
 
   @OneToMany(() => Cats, (cats) => cats.owner)
   cats: Array<Cats>;

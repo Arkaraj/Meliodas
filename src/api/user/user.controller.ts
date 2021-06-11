@@ -1,4 +1,14 @@
-import { Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+} from '@nestjs/common';
+import { AddressDto } from './address.dto';
+import { UserDto } from './user.dto';
 import { UserService } from './user.service';
 
 @Controller('api/user')
@@ -16,8 +26,8 @@ export class UserController {
   }
 
   @Post()
-  public async createUser() {
-    return this.userService.createUser();
+  public async createUser(@Body() usr: UserDto) {
+    return await this.userService.createUser(usr);
   }
 
   @Post('/:userId/:catId')
@@ -25,12 +35,15 @@ export class UserController {
     @Param('userId') uid: string,
     @Param('catId') cid: string,
   ) {
-    return this.userService.adoptKats(uid, cid);
+    return await this.userService.adoptKats(uid, cid);
   }
 
   @Put('/:userId')
-  public async addAddress(@Param('userId') uid: string) {
-    return this.userService.addAddressToUser(uid);
+  public async addAddress(
+    @Param('userId') uid: string,
+    @Body() addr: AddressDto,
+  ) {
+    return await this.userService.addAddressToUser(uid, addr);
   }
 
   @Delete('/:userId')

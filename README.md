@@ -72,7 +72,7 @@ P.S. I wanted to test out NestJs hype....
 - My SQL
 - TypeOrm for sql orm(preferably)
 
-## Routes
+## Routes (Tested in Postman)
 
 - GET /cats/ - Get all Cats
 - GET /cats/:id - Get a Specific Cat

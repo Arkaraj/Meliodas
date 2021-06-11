@@ -24,8 +24,8 @@ export class Cats extends BaseEntity {
   @Column('text')
   breed: string;
 
-  @Column('text')
-  weight: string;
+  @Column('float')
+  weight: number;
 
   @Column({ type: 'enum', enum: Gender, default: Gender.Male })
   gender: string;
@@ -36,14 +36,14 @@ export class Cats extends BaseEntity {
   @Column('text')
   description: string;
 
-  @Column('int')
+  @Column('int', { default: 0 })
   petPoints: number;
 
   @Column('boolean', { default: true })
   isavailable: boolean;
 
-  @Column('varchar')
-  ownerId: string;
+  @Column('varchar', { nullable: true })
+  ownerId: string | null;
   @ManyToOne(() => User, (usr) => usr.cats)
   @JoinColumn({ name: 'ownerId' })
   owner: User;

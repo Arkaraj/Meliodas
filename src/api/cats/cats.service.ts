@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Cats } from '../../entities/Cats.entity';
+import { CatsDto } from './cats.dto';
 
 @Injectable()
 export class CatsService {
@@ -13,8 +14,16 @@ export class CatsService {
     const cat = await Cats.findOne(catId);
     return cat;
   }
-  public async createCat() {
-    const cat = await Cats.create({}).save();
+  public async createCat(kat: CatsDto) {
+    const cat = await Cats.create({
+      name: kat.name,
+      description: kat.description,
+      breed: kat.breed,
+      colour: kat.colour,
+      gender: kat.gender,
+      weight: kat.weight,
+      ownerId: null,
+    }).save();
     return cat;
   }
 

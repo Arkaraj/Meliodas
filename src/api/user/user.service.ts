@@ -2,6 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { Address } from '../../entities/Address.entity';
 import { Cats } from '../../entities/Cats.entity';
 import { User } from '../../entities/User.entity';
+import { AddressDto } from './address.dto';
+import { UserDto } from './user.dto';
 
 @Injectable()
 export class UserService {
@@ -16,12 +18,19 @@ export class UserService {
     return user;
   }
 
-  async createUser() {
-    await User.create({}).save();
+  async createUser(user: UserDto) {
+    return await User.create({
+      firstName: user.firstName,
+      lastName: user.lastName,
+      age: user.age,
+      phone: user.phone,
+      cats: [],
+      // address: null,
+    }).save();
   }
 
-  async addAddressToUser(userId: string) {
-    const address = await Address.create({}).save();
+  async addAddressToUser(userId: string, addr: AddressDto) {
+    const address = await Address.create(addr).save();
     const user = await User.findOne(userId);
     user.address = address;
     return await user.save();
